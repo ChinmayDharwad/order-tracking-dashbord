@@ -35,8 +35,8 @@ function Information() {
                 <MKBox mb={5}>
                   <DefaultInfoCard
                     icon="public"
-                    title="Fully integrated"
-                    description="We get insulted by others, lose trust for those We get back freezes"
+                    title="Global Network"
+                    description="Leverage our vast global network, ensuring your shipments reach any corner of the world efficiently and securely"
                   />
                 </MKBox>
               </Grid>
@@ -44,8 +44,8 @@ function Information() {
                 <MKBox mb={5}>
                   <DefaultInfoCard
                     icon="payments"
-                    title="Payments functionality"
-                    description="We get insulted by others, lose trust for those We get back freezes"
+                    title="Seamless Transactions"
+                    description="Experience hassle-free payments with our integrated solutions, ensuring swift and secure transactions for all your logistics needs"
                   />
                 </MKBox>
               </Grid>
@@ -53,8 +53,8 @@ function Information() {
                 <MKBox mb={{ xs: 5, md: 0 }}>
                   <DefaultInfoCard
                     icon="apps"
-                    title="Prebuilt components"
-                    description="We get insulted by others, lose trust for those We get back freezes"
+                    title="Advanced Tech Solutions"
+                    description="Benefit from our state-of-the-art technology, from real-time tracking to advanced analytics, enhancing your logistics experience"
                   />
                 </MKBox>
               </Grid>
@@ -62,8 +62,8 @@ function Information() {
                 <MKBox mb={{ xs: 5, md: 0 }}>
                   <DefaultInfoCard
                     icon="3p"
-                    title="Improved platform"
-                    description="We get insulted by others, lose trust for those We get back freezes"
+                    title="Optimized Logistics Platform"
+                    description="Our platform is continuously evolving, ensuring you get the best in class services, tools, and insights for all your shipping requirements"
                   />
                 </MKBox>
               </Grid>
@@ -72,11 +72,11 @@ function Information() {
           <Grid item xs={12} lg={4} sx={{ ml: "auto", mt: { xs: 3, lg: 0 } }}>
             <CenteredBlogCard
               image="https://images.unsplash.com/photo-1544717302-de2939b7ef71?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
-              title="Get insights on Search"
-              description="Website visitors today demand a frictionless user expericence — especially when using search. Because of the hight standards."
+              title="Stay Informed with Insights"
+              description="Dive deep into the world of logistics with our insights. Stay updated with trends, challenges, and opportunities in the ever-evolving logistics landscape"
               action={{
                 type: "internal",
-                route: "pages/company/about-us",
+                route: "/AboutUs",
                 color: "info",
                 label: "find out more",
               }}

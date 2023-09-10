@@ -43,17 +43,7 @@ import bgImage from "assets/images/bg-about-us.jpg";
 function AboutUs() {
   return (
     <>
-      <DefaultNavbar
-        routes={routes}
-        // action={{
-        //   type: "external",
-        //   route: "https://www.creative-tim.com/product/material-kit-react",
-        //   label: "free download",
-        //   color: "default",
-        // }}
-        transparent
-        light
-      />
+      <DefaultNavbar routes={routes} transparent light />
       <MKBox
         minHeight="75vh"
         width="100%"
@@ -92,11 +82,11 @@ function AboutUs() {
               Delivering Excellence
             </MKTypography>
             <MKTypography variant="body1" color="white" opacity={0.8} mt={1} mb={3}>
-              We&apos;re constantly trying to express ourselves and actualize our dreams. If you
-              have the opportunity to play this game
+              Experience unparalleled logistics solutions tailored to your needs. From local
+              deliveries to global shipments, we ensure timely and secure transportation.
             </MKTypography>
             <MKButton color="default" sx={{ color: ({ palette: { dark } }) => dark.main }}>
-              create account
+              Join Us
             </MKButton>
             <MKTypography variant="h6" color="white" mt={8} mb={1}>
               Find us on

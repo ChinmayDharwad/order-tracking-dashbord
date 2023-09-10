@@ -24,35 +24,48 @@ import MKTypography from "pages/components/MKTypography";
 import MKInput from "pages/components/MKInput";
 import MKButton from "pages/components/MKButton";
 
-// Images
-import macbook from "assets/images/macbook.png";
-
-function Newsletter() {
+function ContactUs() {
   return (
-    <MKBox component="section" pt={6} my={6}>
+    <MKBox component="section" pt={6} my={6} bgcolor="background.paper">
       <Container>
         <Grid container alignItems="center">
-          <Grid item sx={12} md={6} sx={{ ml: { xs: 0, lg: 3 }, mb: { xs: 12, md: 0 } }}>
-            <MKTypography variant="h4">Be the first to see the news</MKTypography>
+          <Grid item xs={12} md={6}>
+            <MKTypography variant="h4">Get in Touch</MKTypography>
             <MKTypography variant="body2" color="text" mb={3}>
-              Your company may not be in the software business, but eventually, a software company
-              will be in your business.
+              Have questions or need assistance with your logistics needs? Reach out to us, and our
+              team will be happy to help.
             </MKTypography>
-            <Grid container spacing={1}>
-              <Grid item xs={8}>
-                <MKInput type="email" label="Email Here..." fullWidth />
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <MKInput type="text" label="Full Name" fullWidth />
               </Grid>
-              <Grid item xs={4}>
-                <MKButton variant="gradient" color="info" sx={{ height: "100%" }}>
-                  Subscribe
+              <Grid item xs={12}>
+                <MKInput type="email" label="Email Address" fullWidth />
+              </Grid>
+              <Grid item xs={12}>
+                <MKInput type="text" label="Subject" fullWidth />
+              </Grid>
+              <Grid item xs={12}>
+                <MKInput type="text" label="Message" multiline rows={4} fullWidth />
+              </Grid>
+              <Grid item xs={12}>
+                <MKButton variant="gradient" color="info">
+                  Submit
                 </MKButton>
               </Grid>
             </Grid>
           </Grid>
           <Grid item xs={12} md={5} sx={{ ml: "auto" }}>
-            <MKBox position="relative">
-              <MKBox component="img" src={macbook} alt="macbook" width="100%" />
-            </MKBox>
+            <MKTypography variant="h5">Contact Details</MKTypography>
+            <MKTypography variant="body2" color="text" mb={2}>
+              <strong>Address:</strong> 123 Logistics Lane, Shipping City, 12345
+            </MKTypography>
+            <MKTypography variant="body2" color="text" mb={2}>
+              <strong>Phone:</strong> (123) 456-7890
+            </MKTypography>
+            <MKTypography variant="body2" color="text" mb={2}>
+              <strong>Email:</strong> support@logisticscompany.com
+            </MKTypography>
           </Grid>
         </Grid>
       </Container>
@@ -60,4 +73,4 @@ function Newsletter() {
   );
 }
 
-export default Newsletter;
+export default ContactUs;
