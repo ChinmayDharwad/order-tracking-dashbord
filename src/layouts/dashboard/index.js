@@ -35,11 +35,25 @@ import reportsLineChartData from "layouts/dashboard/data/reportsLineChartData";
 import Projects from "layouts/dashboard/components/Projects";
 import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 
+import Sidenav from "examples/Sidenav";
+import { useMaterialUIController } from "context";
+// Images
+import brandWhite from "assets/images/imex.png";
+import brandDark from "assets/images/imex.png";
+// Material Dashboard 2 React routes
+import routes from "routes";
+
 function Dashboard() {
   const { sales, tasks } = reportsLineChartData;
 
+  const [controller, dispatch] = useMaterialUIController();
+  const { sidenavColor, transparentSidenav, darkMode, whiteSidenav } = controller;
+
+  const brand = (transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite;
+
   return (
     <DashboardLayout>
+      <Sidenav color={sidenavColor} brand={brand} brandName="IMEX Cargo" routes={routes} />
       <DashboardNavbar />
       <MDBox py={3}>
         <Grid container spacing={3}>
