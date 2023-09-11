@@ -13,72 +13,64 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-// @mui material components
+import React from "react";
+import PropTypes from "prop-types";
 import Card from "@mui/material/Card";
-import Icon from "@mui/material/Icon";
-
-// Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
+import { Padding } from "@mui/icons-material";
+import "./tracking.css";
 
-// Material Dashboard 2 React example components
-import TimelineItem from "examples/Timeline/TimelineItem";
-
-function OrdersOverview() {
+function OrdersOverview({ order }) {
   return (
     <Card sx={{ height: "100%" }}>
-      <MDBox pt={3} px={3}>
-        <MDTypography variant="h6" fontWeight="medium">
-          Orders overview
-        </MDTypography>
-        <MDBox mt={0} mb={2}>
-          <MDTypography variant="button" color="text" fontWeight="regular">
-            <MDTypography display="inline" variant="body2" verticalAlign="middle">
-              <Icon sx={{ color: ({ palette: { success } }) => success.main }}>arrow_upward</Icon>
-            </MDTypography>
-            &nbsp;
-            <MDTypography variant="button" color="text" fontWeight="medium">
-              24%
-            </MDTypography>{" "}
-            this month
+      <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
+        <MDBox>
+          <MDTypography variant="h6" gutterBottom>
+            Order Overview
           </MDTypography>
         </MDBox>
       </MDBox>
-      <MDBox p={2}>
-        <TimelineItem
-          color="success"
-          icon="notifications"
-          title="$2400, Design changes"
-          dateTime="22 DEC 7:20 PM"
-        />
-        <TimelineItem
-          color="error"
-          icon="inventory_2"
-          title="New order #1832412"
-          dateTime="21 DEC 11 PM"
-        />
-        <TimelineItem
-          color="info"
-          icon="shopping_cart"
-          title="Server payments for April"
-          dateTime="21 DEC 9:34 PM"
-        />
-        <TimelineItem
-          color="warning"
-          icon="payment"
-          title="New card added for order #4395133"
-          dateTime="20 DEC 2:20 AM"
-        />
-        <TimelineItem
-          color="primary"
-          icon="vpn_key"
-          title="New card added for order #4395133"
-          dateTime="18 DEC 4:54 AM"
-          lastItem
-        />
-      </MDBox>
+
+      {order ? (
+        <p style={{ paddingLeft: "30px", fontSize: "20px", fontWeight: "bold", color: "#007bff" }}>
+          {order.orderID}
+        </p>
+      ) : null}
+
+      <br />
+
+      <div className="timeline">
+        <div className={`timeline-item ${order.status === "Ordered" ? "active" : ""}`}>
+          <div className="timeline-content">
+            <p>Ordered</p>
+          </div>
+        </div>
+        <div className={`timeline-item ${order.status === "Shipped" ? "active" : ""}`}>
+          <div className="timeline-content">
+            <p>Shipped</p>
+          </div>
+        </div>
+        <div className={`timeline-item ${order.status === "Delivered" ? "active" : ""}`}>
+          <div className="timeline-content">
+            <p>Delivered</p>
+          </div>
+        </div>
+      </div>
+      <br />
     </Card>
   );
 }
+
+// PropTypes validation
+OrdersOverview.propTypes = {
+  order: PropTypes.shape({
+    orderID: PropTypes.string.isRequired,
+    fromAddress: PropTypes.string.isRequired,
+    toAddress: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    // Add any other PropTypes as needed for your 'order' object
+  }).isRequired,
+};
 
 export default OrdersOverview;

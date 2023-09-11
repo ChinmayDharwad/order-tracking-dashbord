@@ -14,57 +14,73 @@ Coded by www.creative-tim.com
 */
 
 import { useState } from "react";
-
+import Grid from "@mui/material/Grid";
+import OrdersOverview from "layouts/dashboard/components/OrdersOverview";
 // @mui material components
 import Card from "@mui/material/Card";
 import Icon from "@mui/material/Icon";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
 import MDTypography from "components/MDTypography";
 
 // Material Dashboard 2 React examples
-import DataTable from "examples/Tables/DataTable";
+import DataTable from "react-data-table-component";
 
 // Data
 import data from "layouts/dashboard/components/Projects/data";
 
+const customStyles = {
+  table: {
+    width: "60%", // Set the width to 60
+  },
+
+  rows: {
+    style: {},
+  },
+  headCells: {
+    style: {
+      fontWeight: "bold",
+    },
+  },
+  cells: {
+    style: {},
+  },
+};
+
 function Projects() {
   const { columns, rows } = data();
-  const [menu, setMenu] = useState(null);
 
-  const openMenu = ({ currentTarget }) => setMenu(currentTarget);
-  const closeMenu = () => setMenu(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredOrders, setFilteredOrders] = useState(rows); // Assuming 'rows' contains all orders initially
+  const [selectedOrder, setSelectedOrder] = useState(rows);
 
-  const renderMenu = (
-    <Menu
-      id="simple-menu"
-      anchorEl={menu}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "left",
-      }}
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={Boolean(menu)}
-      onClose={closeMenu}
-    >
-      <MenuItem onClick={closeMenu}>Action</MenuItem>
-      <MenuItem onClick={closeMenu}>Another action</MenuItem>
-      <MenuItem onClick={closeMenu}>Something else</MenuItem>
-    </Menu>
-  );
+  // Event handler for row click
+  // Assuming your order objects have a unique identifier field called 'orderID'
+  const handleRowClicked = (row) => {
+    console.log("Row: ", row);
+    setSelectedOrder(row);
+  };
+
+  //Event handler for input change
+  const handleInputChange = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+
+    // Filter orders based on the search query
+    const filtered = rows.filter((order) =>
+      order.orderID.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setFilteredOrders(filtered);
+  };
 
   return (
     <Card>
       <MDBox display="flex" justifyContent="space-between" alignItems="center" p={3}>
         <MDBox>
           <MDTypography variant="h6" gutterBottom>
-            Projects
+            Track Orders
           </MDTypography>
           <MDBox display="flex" alignItems="center" lineHeight={0}>
             <Icon
@@ -81,22 +97,31 @@ function Projects() {
             </MDTypography>
           </MDBox>
         </MDBox>
-        <MDBox color="text" px={2}>
-          <Icon sx={{ cursor: "pointer", fontWeight: "bold" }} fontSize="small" onClick={openMenu}>
-            more_vert
-          </Icon>
-        </MDBox>
-        {renderMenu}
       </MDBox>
+      <div style={{ display: "flex" }}>
+        <input
+          style={{
+            width: "30%",
+            padding: "10px",
+            margin: "10px",
+          }}
+          placeholder="Search order by orderID"
+          value={searchQuery}
+          onChange={handleInputChange}
+        />
+      </div>
       <MDBox>
         <DataTable
-          table={{ columns, rows }}
-          showTotalEntries={false}
-          isSorted={false}
-          noEndBorder
-          entriesPerPage={false}
+          columns={columns}
+          data={filteredOrders}
+          onRowClicked={handleRowClicked}
+          customStyles={customStyles}
+          pagination
+          showTotalEntries
         />
       </MDBox>
+      <br />
+      <OrdersOverview order={selectedOrder} />
     </Card>
   );
 }

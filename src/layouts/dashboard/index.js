@@ -18,6 +18,8 @@ import Grid from "@mui/material/Grid";
 
 // Material Dashboard 2 React components
 import MDBox from "components/MDBox";
+import data from "layouts/dashboard/components/Projects/data";
+import { useState } from "react";
 
 // Material Dashboard 2 React example components
 import DashboardLayout from "examples/LayoutContainers/DashboardLayout";
@@ -62,11 +64,11 @@ function Dashboard() {
               <ComplexStatisticsCard
                 color="dark"
                 icon="weekend"
-                title="Bookings"
-                count={281}
+                title="Orders"
+                count={6}
                 percentage={{
                   color: "success",
-                  amount: "+55%",
+                  amount: "+5%",
                   label: "than lask week",
                 }}
               />
@@ -76,7 +78,7 @@ function Dashboard() {
             <MDBox mb={1.5}>
               <ComplexStatisticsCard
                 icon="leaderboard"
-                title="Today's Users"
+                title="Customers"
                 count="2,300"
                 percentage={{
                   color: "success",
@@ -160,16 +162,12 @@ function Dashboard() {
         </MDBox>
         <MDBox>
           <Grid container spacing={3}>
-            <Grid item xs={12} md={6} lg={8}>
+            <Grid item xs={12} md={6} lg={100}>
               <Projects />
-            </Grid>
-            <Grid item xs={12} md={6} lg={4}>
-              <OrdersOverview />
             </Grid>
           </Grid>
         </MDBox>
       </MDBox>
-      <Footer />
     </DashboardLayout>
   );
 }
